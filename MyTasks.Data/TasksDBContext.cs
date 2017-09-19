@@ -8,16 +8,26 @@ using System.Threading.Tasks;
 
 namespace MyTasks.Data
 {
-    public class TasksDBContext : IdentityDbContext<ApplicationUser>
+    public class TasksDBContext : IdentityDbContext<AppUser>
     {
+        public TasksDBContext()
+            : base("DefaultConnection", throwIfV1Schema: false)
+        {
+        }
+
         public DbSet<ToDo> ToDos { get; set; }
+
+        public static TasksDBContext Create()
+        {
+            return new TasksDBContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<IdentityUser>().ToTable("Users");
-            modelBuilder.Entity<ApplicationUser>().ToTable("Users");
+            modelBuilder.Entity<IdentityUser>().ToTable("User");
+            modelBuilder.Entity<AppUser>().ToTable("User");
 
             modelBuilder.Entity<IdentityRole>().ToTable("Roles");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("User_Claim");
@@ -25,6 +35,7 @@ namespace MyTasks.Data
             modelBuilder.Entity<IdentityUserRole>().ToTable("User_Role");
         }
 
+        
     }
 
     

@@ -53,15 +53,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationUser.cs" />
+    <Compile Include="Migrations\201709190120236_NewData.cs" />
+    <Compile Include="Migrations\201709190120236_NewData.Designer.cs">
+      <DependentUpon>201709190120236_NewData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709191027213_NewData2.cs" />
+    <Compile Include="Migrations\201709191027213_NewData2.Designer.cs">
+      <DependentUpon>201709191027213_NewData2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="Migrations\201709140942310_MyTasks.Data.cs" />
+    <Compile Include="Migrations\201709140942310_MyTasks.Data.Designer.cs">
+      <DependentUpon>201709140942310_MyTasks.Data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TasksDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToDo.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="ToDoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709140942310_MyTasks.Data.resx">
+      <DependentUpon>201709140942310_MyTasks.Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709190120236_NewData.resx">
+      <DependentUpon>201709190120236_NewData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709191027213_NewData2.resx">
+      <DependentUpon>201709191027213_NewData2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

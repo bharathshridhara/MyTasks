@@ -1,4 +1,7 @@
-﻿using Microsoft.Owin;
+﻿using AutoMapper;
+using Microsoft.Owin;
+using MyTasks.Data;
+using MyTasks.Models;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(MyTasks.Startup))]
@@ -9,6 +12,7 @@ namespace MyTasks
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            Mapper.Initialize(config => config.CreateMap(typeof(ToDo), typeof(ToDoViewModels)).ReverseMap());
         }
     }
 }

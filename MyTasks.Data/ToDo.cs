@@ -9,9 +9,13 @@ namespace MyTasks.Data
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long ToDoID { get; set; }
-        [ForeignKey("Userid")]
-        public User User { get; set; }
+        public long Id { get; set; }
+
+        public string AppUserId{ get; set; }
+
+        [ForeignKey("AppUserId")]
+        public AppUser User { get; set; }
+
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public bool Complete { get; set; }
